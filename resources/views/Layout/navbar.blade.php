@@ -54,10 +54,12 @@
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
+            @if(Auth::user()->can('Supermin'))
             <a href="/admin/user/dashboard" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
+            @endif
             <div class="dropdown-divider"></div>
             <a href="/admin/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>

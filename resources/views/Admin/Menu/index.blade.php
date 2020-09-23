@@ -10,7 +10,14 @@
 
     <div class="card">
         <div class="card-header">
-          <h2 class="text-primary">Data User</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-primary">Data Menu</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a class="btn btn-primary" href="/admin/user/menu/add" role="button">Add Data</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <table id="datatable" class="table table-striped table-bordered display responsive nowrap" style="width:100%">
@@ -18,37 +25,35 @@
                     <tr>
                         <th style="text-align: center;"><input type="checkbox" aria-label="Checkbox for following text input"></th>
                         <th>Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Roles</th>
-                        <th>Status</th>
+                        <th>Uri</th>
+                        <th>Icon</th>
+                        <th>Is Active</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $user)
+                    @foreach ($data as $menu)
                     <tr>
                         <td style="text-align: center;"><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                        <td>{!!$user->name!!}</td>
-                        <td>{!!$user->username!!}</td>
-                        <td>{!!$user->email!!}</td>
-                        @if ($user->roles_id == null)
-                        <td>----</td>
+                        <td>{!!$menu->name!!}</td>
+                        <td>{!!$menu->uri!!}</td>
+                        @if ($menu->icon == null)
+                        <td> <img src="{{asset('assets/img/no-image.jpg')}}" class="img-fluid" alt="Responsive image" width="50"> </td>
                         @else
-                        <td>{!!$user->role->name!!}</td>
+                        <td><img src="{{asset('menus_icon/'.$menu->icon)}}" class="img-fluid" alt="Responsive image" width="50"></td>
                         @endif
-                        @if ($user->is_active == 0)
+                        @if ($menu->is_active == 0)
                         <td>
-                            <input id="{!!$user->id!!}" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <input id="{!!$menu->id!!}" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
                         </td>
                         @else
                         <td>
-                            <input id="{!!$user->id!!}" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <input id="{!!$menu->id!!}" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
                         </td>
                         @endif
                         <td>
-                            <a style="margin-right: 20px;" href="{{url()->current().'/'.$user->id.'/edit'}}"><i class="fa fa-edit text-primary" style="font-size: 21px;"></i></a>
-                            <a style="margin-right: 10px;" href="{{url()->current().'/'.$user->id.'/delete'}}"><i class="fa fa-trash text-primary" style="font-size: 21px;"></i></a>
+                            <a style="margin-right: 20px;" href="{{url()->current().'/'.$menu->id.'/edit'}}"><i class="fa fa-edit text-primary" style="font-size: 21px;"></i></a>
+                            <a style="margin-right: 10px;" href="{{url()->current().'/'.$menu->id.'/delete'}}"><i class="fa fa-trash text-primary" style="font-size: 21px;"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -63,15 +68,24 @@
 @section('js')
 <script>
     $(document).ready(function() {   
-        $("#users").addClass("active");
+        $("#menu").addClass("active");
     });
 </script>
 
 <script type="text/javascript">
+    @if ($message = Session::get('created'))
+            iziToast.success({
+                        title: 'Success',
+                        message: 'Data berhasil disimpan',
+                        position: 'topRight'
+                    });
+    @endif
+</script>
+<script type="text/javascript">
     @if ($message = Session::get('updated'))
             iziToast.success({
                         title: 'Success',
-                        message: 'Data berhasil diperbaharui',
+                        message: 'Data berhasil diubah',
                         position: 'topRight'
                     });
     @endif
@@ -86,10 +100,10 @@
     @endif
 </script>
 <script type="text/javascript">
-    @if ($message = Session::get('error'))
+    @if ($message = Session::get('warning'))
             iziToast.error({
-                        title: 'Error',
-                        message: 'Gagal memproses',
+                        title: 'Failed',
+                        message: 'Data gagal diproses',
                         position: 'topRight'
                     });
     @endif
@@ -104,7 +118,7 @@
         var is_active = status;
         // console.log(id);
         // console.log(status);
-        axios.post('/admin/user/activation', {
+        axios.post('/admin/activation', {
             is_active: is_active,
             id: id
         })

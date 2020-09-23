@@ -23,7 +23,8 @@
 
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/iziToast.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/iziToast.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/iziToast.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/tower-file-input.css') }}">
   @yield('css')
 </head>
 
@@ -61,6 +62,7 @@
     } );
   </script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="{{ asset('assets/js/tower-file-input.js') }}"></script>
   @yield('js')
 </body>
 

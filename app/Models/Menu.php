@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class Menu extends Model
 {
     use HasFactory;
 
@@ -13,9 +13,9 @@ class Permission extends Model
         'name',
     ];
 
-    public function menu()
+    public function permission()
     {
-        return $this->belongsTo('App\Models\Menu', 'menu_id', 'id');
+        return $this->hasMany('App\Models\Permission', 'id', 'menu_id');
     }
 
 }

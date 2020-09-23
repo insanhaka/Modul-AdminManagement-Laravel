@@ -32,7 +32,19 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Other</span>
+                <span class="nav-link-text">Other1</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Other2</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Other3</span>
               </a>
             </li>
           </ul>
