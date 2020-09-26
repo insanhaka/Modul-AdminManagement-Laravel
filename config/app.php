@@ -176,6 +176,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Costume Service Providers...
+         */
+        App\Providers\MenuServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'MenuLib' => App\Helpers\MenuLib::class,
 
     ],
 

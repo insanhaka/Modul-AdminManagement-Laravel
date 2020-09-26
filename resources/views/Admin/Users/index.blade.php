@@ -21,6 +21,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Roles</th>
+                        <th>Picture</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -37,13 +38,24 @@
                         @else
                         <td>{!!$user->role->name!!}</td>
                         @endif
+                        @if ($user->photo == null)
+                        <td> <img src="{{asset('assets/img/no-image.jpg')}}" class="img-fluid" alt="Responsive image" width="50"> </td>
+                        @else
+                        <td><img src="{{asset('profile_pictures/'.$user->photo)}}" class="img-fluid" alt="Responsive image" width="50"></td>
+                        @endif
                         @if ($user->is_active == 0)
                         <td>
-                            <input id="{!!$user->id!!}" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <label class="custom-toggle">
+                                <input id="{!!$user->id!!}" type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON" ></span>
+                            </label>
                         </td>
                         @else
                         <td>
-                            <input id="{!!$user->id!!}" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <label class="custom-toggle">
+                                <input id="{!!$user->id!!}" type="checkbox" checked>
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON" ></span>
+                            </label>
                         </td>
                         @endif
                         <td>

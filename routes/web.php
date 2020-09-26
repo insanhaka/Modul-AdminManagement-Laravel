@@ -59,5 +59,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/user/menu/{id}/edit', [MenuController::class, 'edit']);
     Route::post('/user/menu/{id}/update', [MenuController::class, 'update']);
     Route::get('/user/menu/{id}/delete', [MenuController::class, 'delete']);
+    Route::post('/menu/activation', [MenuController::class, 'activation']);
 
 });

@@ -10,7 +10,7 @@
 
     <div class="card">
         <div class="card-header">
-          <h2 class="text-primary">Add Roles Data</h2>
+          <h2 class="text-primary">Edit Roles Data</h2>
         </div>
         <div class="card-body">
             <form method="POST" action="/admin/user/roles/{!! $data->id !!}/update">

@@ -44,11 +44,17 @@
                         @endif
                         @if ($menu->is_active == 0)
                         <td>
-                            <input id="{!!$menu->id!!}" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <label class="custom-toggle">
+                                <input id="{!!$menu->id!!}" type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON" ></span>
+                            </label>
                         </td>
                         @else
                         <td>
-                            <input id="{!!$menu->id!!}" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+                            <label class="custom-toggle">
+                                <input id="{!!$menu->id!!}" type="checkbox" checked>
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON" ></span>
+                            </label>
                         </td>
                         @endif
                         <td>
@@ -118,7 +124,7 @@
         var is_active = status;
         // console.log(id);
         // console.log(status);
-        axios.post('/admin/activation', {
+        axios.post('/admin/menu/activation', {
             is_active: is_active,
             id: id
         })

@@ -39,7 +39,11 @@
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                @if (Auth::user()->photo == null)
+                <img alt="Image placeholder" src="{{asset('assets/img/no-image.jpg')}}">
+                @else
+                <img alt="Image placeholder" src="{{asset('profile_pictures/'.Auth::user()->photo)}}">
+                @endif
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
@@ -54,12 +58,12 @@
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            @if(Auth::user()->can('Supermin'))
+            @hasrole('Supermin')
             <a href="/admin/user/dashboard" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
-            @endif
+            @endhasrole
             <div class="dropdown-divider"></div>
             <a href="/admin/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>

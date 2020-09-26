@@ -33,7 +33,12 @@
                         <h1>My Profile</h1>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{asset('assets/img/avatar.png')}}" class="rounded float-right" width="130" style="margin-bottom: 5%;">
+                        @if ($data->photo == null)
+                        <img src="{{asset('assets/img/no-image.jpg')}}" class="rounded float-right" width="130" style="margin-bottom: 5%;">
+                        @else
+                        <img src="{{asset('profile_pictures/'.$data->photo)}}" class="rounded float-right" width="130" style="margin-bottom: 5%;">
+                        @endif
+                        
                     </div>
                 </div>
 

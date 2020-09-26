@@ -17,6 +17,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/argon.css?v=1.2.0')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
@@ -46,6 +47,7 @@
   <!-- Optional JS -->
   <script src="{{asset('assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
+  <script src="{{asset('assets/vendor/select2/dist/js/select2.min.js')}}"></script>
   <!-- Argon JS -->
   <script src="{{asset('assets/js/argon.js?v=1.2.0')}}"></script>
   <script src="{{ asset('assets/js/iziToast.js') }}"></script>

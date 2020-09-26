@@ -36,20 +36,43 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $roles_id = $request->roles_id;
+        $file = $request->file('gambar');
+        $pass = $request->password;
 
         $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $role = Roles::findOrFail($roles_id);
-        $user->syncRoles($role->name);
-        $user->roles_id = $roles_id;
-        $process = $user->save();
 
-        if ($process) {
-            return redirect(url('/admin/user/view'))->with('updated','Data Berhasil Disimpan');
-        } else {
-            return back()->with('error','Data Gagal Disimpan');
+        if($file == null || $pass == null){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $role = Roles::findOrFail($roles_id);
+            $user->syncRoles($role->name);
+            $user->roles_id = $roles_id;
+
+            $process = $user->save();
+            if ($process) {
+                return redirect(url('/admin/user/view'))->with('updated','Data Berhasil Disimpan');
+            } else {
+                return back()->with('error','Data Gagal Disimpan');
+            }
+        }else{
+            $nama_file = time()."_".$file->getClientOriginalName();
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'profile_pictures';
+            $file->move($tujuan_upload,$nama_file);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $role = Roles::findOrFail($roles_id);
+            $user->syncRoles($role->name);
+            $user->roles_id = $roles_id;
+            $user->photo = $nama_file;
+
+            $process = $user->save();
+            if ($process) {
+                return redirect(url('/admin/user/view'))->with('updated','Data Berhasil Disimpan');
+            } else {
+                return back()->with('error','Data Gagal Disimpan');
+            }
         }
 
         // bcrypt($request->password)

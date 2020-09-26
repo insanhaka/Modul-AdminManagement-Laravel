@@ -42,6 +42,47 @@ class MenuController extends Controller
         return redirect(url('/admin/user/menu'))->with('created','Data Berhasil Disimpan');
     }
 
+    public function edit($id)
+    {
+        $menus = Menu::findOrFail($id);
+        return view('Admin.Menu.edit', ['data' => $menus]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $file = $request->file('gambar');
+
+        $menus = Menu::findOrFail($id);
+
+        if($file == null){
+            $menus->name = $request->name;
+            $menus->uri = $request->uri;
+            $menus->is_active = $request->is_active;
+            $process = $menus->save();
+            if ($process) {
+                return redirect(url('/admin/user/menu'))->with('updated','Data Berhasil Disimpan');
+            } else {
+                return back()->with('warning','Data Gagal Disimpan');
+            }
+        }else{
+            $nama_file = time()."_".$file->getClientOriginalName();
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'menus_icon';
+            $file->move($tujuan_upload,$nama_file);
+            $menus->name = $request->name;
+            $menus->uri = $request->uri;
+            $menus->is_active = $request->is_active;
+            $menus->icon = $nama_file;
+            $process = $menus->save();
+            if ($process) {
+                return redirect(url('/admin/user/menu'))->with('updated','Data Berhasil Disimpan');
+            } else {
+                return back()->with('warning','Data Gagal Disimpan');
+            }
+        }
+
+    }
+
     public function delete($id)
     {
         $menu = Menu::find($id);
@@ -52,5 +93,16 @@ class MenuController extends Controller
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }
+    }
+
+    public function activation(Request $request)
+    {
+        $id = $request->id;
+        // dd($id);
+
+        $menus = Menu::findOrFail($id);
+        $menus->is_active = $request->is_active;
+        
+        $process = $menus->save();
     }
 }

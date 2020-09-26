@@ -1,7 +1,7 @@
 @extends('Admin.Layouts.app')
 
 @section('css')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css" rel="stylesheet">
+    
 @endsection
 
 @section('content')
@@ -10,17 +10,17 @@
 
     <div class="card">
         <div class="card-header">
-          <h2 class="text-primary">Add Roles Data</h2>
+          <h2 class="text-primary">Edit Permission Data</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/user/roles/create">
+            <form method="POST" action="/admin/user/permission/{!! $data->id !!}/update">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Role's name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Role's name" value="{!! $data->name !!}">
                             </div>
                         </div>
                     </div>
@@ -40,27 +40,9 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
-
 <script>
     $(document).ready(function() {   
-        $("#roles").addClass("active");
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        new SlimSelect({
-            select: '#slimselect',
-        })
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        new SlimSelect({
-            select: '#slimselectmulti',
-            placeholder: 'Select Permissions',
-        })
+        $("#permission").addClass("active");
     });
 </script>
 @endsection

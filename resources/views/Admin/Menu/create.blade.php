@@ -89,7 +89,7 @@
       $("#name").change(function(){
         var name = document.getElementById('name').value;
         var uri = name.toLowerCase();
-        document.getElementById('uri').value = uri;
+        document.getElementById('uri').value = "/" + uri;
       });
     });
 </script>
