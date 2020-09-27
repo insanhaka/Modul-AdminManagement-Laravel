@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SectorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
+    //Route Untuk Super Admin
     Route::get('/user/dashboard', [UsersController::class, 'index'])->name('admin');
     Route::get('/user/{id}/profile', [UsersController::class, 'profile']);
     Route::get('/user/view', [UsersController::class, 'view']);
@@ -49,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/user/permission', [PermissionController::class, 'view'])->name('permission');
     Route::get('/user/permission/add', [PermissionController::class, 'add']);
     Route::post('/user/permission/create', [PermissionController::class, 'create']);
+    Route::get('/user/permission/{id}/show', [PermissionController::class, 'show']);
     Route::get('/user/permission/{id}/edit', [PermissionController::class, 'edit']);
     Route::post('/user/permission/{id}/update', [PermissionController::class, 'update']);
     Route::get('/user/permission/{id}/delete', [PermissionController::class, 'delete']);
@@ -60,5 +63,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/user/menu/{id}/update', [MenuController::class, 'update']);
     Route::get('/user/menu/{id}/delete', [MenuController::class, 'delete']);
     Route::post('/menu/activation', [MenuController::class, 'activation']);
+
+    //Route Untuk Admin Lain (Sesuai Menu)
+    Route::get('/business-sector', [SectorController::class, 'view'])->name('business-sector');
+    Route::get('/business-sector/add', [SectorController::class, 'add']);
+    Route::post('/business-sector/create', [SectorController::class, 'create']);
+    Route::get('/business-sector/edit/{id}', [SectorController::class, 'edit']);
+    Route::post('/business-sector/update/{id}', [SectorController::class, 'update']);
+    Route::get('/business-sector/delete/{id}', [SectorController::class, 'delete']);
+
+    Route::get('/business', [BusinessController::class, 'view'])->name('business');
+    Route::get('/business/add', [BusinessController::class, 'add']);
+    Route::post('/business/create', [BusinessController::class, 'create']);
+    Route::get('/business/edit/{id}', [BusinessController::class, 'edit']);
+    Route::post('/business/update/{id}', [BusinessController::class, 'update']);
+    Route::get('/business/delete/{id}', [BusinessController::class, 'delete']);
 
 });

@@ -24,20 +24,24 @@
                 <thead class="bg-primary" style="color: #ffff;">
                     <tr>
                         <th style="text-align: center;"><input type="checkbox" aria-label="Checkbox for following text input"></th>
-                        <th>Name</th>
-                        {{-- <th>Role</th> --}}
+                        <th>Roles Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $permission)
+                    @foreach ($rol as $role)
                     <tr>
                         <td style="text-align: center;"><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                        <td>{!!$permission->name!!}</td>
-                        {{-- <td>{!!$permission->asrole->name!!}</td> --}}
+                        <td>{!!$role->name!!}</td>
+                        {{-- <td>
+                            <a class="btn btn-success btn-sm" href="{{url()->current().'/'.$role->id.'/show'}}" role="button">View</a>
+                        </td>
                         <td>
-                            <a style="margin-right: 20px;" href="{{url()->current().'/'.$permission->id.'/edit'}}"><i class="fa fa-edit text-primary" style="font-size: 21px;"></i></a>
-                            <a style="margin-right: 10px;" href="{{url()->current().'/'.$permission->id.'/delete'}}"><i class="fa fa-trash text-primary" style="font-size: 21px;"></i></a>
+                            <a style="margin-right: 10px;" href="{{url()->current().'/'.$role->id.'/delete'}}"><i class="fa fa-trash text-primary" style="font-size: 21px;"></i></a>
+                        </td> --}}
+                        <td>
+                            <a style="margin-right: 20px;" href="{{url()->current().'/'.$role->id.'/show'}}"><i class="fa fa-eye text-primary" style="font-size: 21px;"></i></a>
+                            <a style="margin-right: 10px;" href="{{url()->current().'/'.$role->id.'/delete'}}"><i class="fa fa-trash text-primary" style="font-size: 21px;"></i></a>
                         </td>
                     </tr>
                     @endforeach

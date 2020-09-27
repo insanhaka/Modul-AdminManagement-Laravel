@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Permission;
 use App\Models\Roles;
 use Spatie\Permission\Models\Role;
 use App\Models\Menu;
+use App\Models\RoleToPermission;
 use Illuminate\Support\Str;
 
 
@@ -16,7 +17,16 @@ class PermissionController extends Controller
     public function view()
     {
         $permissions = Permission::all();
-        return view('Admin.Permission.index', ['data' => $permissions]);
+        
+        foreach ($permissions as $data) {
+            $permissions_name[] = Str::before($data->name, ':');
+            $permission_name = array_unique($permissions_name);
+        }
+
+        $role = Roles::all();
+        $roles = $role->intersect(Roles::whereIn('name', $permission_name)->get());        
+        
+        return view('Admin.Permission.index', ['permis' => $permissions, 'rol' => $roles]);
     }
 
     public function add()
@@ -48,32 +58,78 @@ class PermissionController extends Controller
         return redirect(url('/admin/user/permission'))->with('created','Data Berhasil Disimpan');
     }
 
+    public function show($id)
+    {
+        $roles = Roles::findOrFail($id);
+
+        $get_permission_id = RoleToPermission::where('role_id', $id)->get();
+        foreach ($get_permission_id as $g) {
+            $permission_id[] = $g->permission_id;
+        }
+
+        $permissions = Permissions::find($permission_id);
+        foreach ($permissions as $p) {
+            $get_menu_id[] = $p->menu_id;
+        }
+        $menu_id = array_unique($get_menu_id);
+
+        $menus = Menu::all();
+
+        return view('Admin.Permission.view', ['data' => $menus, 'value' => $permissions, 'role' => $roles]);
+    }
+
     public function edit($id)
     {
-        $permission = Permissions::findOrFail($id);
-        return view('Admin.Permission.edit', ['data' => $permission]);
+        $roles = Roles::findOrFail($id);
+
+        $menus = Menu::all();
+        return view('Admin.Permission.edit', ['data' => $menus, 'role' => $roles]);
     }
 
     public function update(Request $request, $id)
     {
-        $name = Str::lower($request->name);
-        $permission = Permissions::findOrFail($id);
-        $permission->name = $name;
-        $process = $permission->save();
+        $role = Role::findOrFail($id);
+        $get_permission_id = RoleToPermission::where('role_id', $id)->get();
 
-        if ($process) {
-            return redirect(url('/admin/user/permission'))->with('updated','Data Berhasil Disimpan');
-        } else {
-            return back()->with('warning','Data Gagal Disimpan');
+        foreach($get_permission_id as $data)
+        {
+            $permission_id[] = $data->permission_id;
         }
+
+        $permission_replace = Permissions::destroy($permission_id);
+
+        foreach($request->permission as $data)
+        {
+            $get_menu = Str::between($data, '/', '/');
+            $menu_id = Menu::where('name', $get_menu)->first();
+            Permission::create([
+                'name' => $role->name.':'.$data,
+                'menu_id' => $menu_id->id
+            ]);
+        }
+
+        foreach($request->permission as $data)
+        {
+            $role->givePermissionTo($role->name.':'.$data);
+        }
+
+        return redirect(url('/admin/user/permission'))->with('updated','Data Berhasil Disimpan');
+        
     }
 
     public function delete($id)
     {
-        $permission = Permissions::find($id);
-        $process = $permission->delete();
+        $role = Role::findOrFail($id);
+        $get_permission_id = RoleToPermission::where('role_id', $id)->get();
 
-        if ($process) {
+        foreach($get_permission_id as $data)
+        {
+            $permission_id[] = $data->permission_id;
+        }
+
+        $permission_delete = Permissions::destroy($permission_id);
+
+        if ($permission_delete) {
             return redirect(url('/admin/user/permission'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');

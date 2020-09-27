@@ -10,17 +10,18 @@
 
     <div class="card">
         <div class="card-header">
-          <h2 class="text-primary">Edit Permission For Role</h2>
+          <h2 class="text-primary">View Permission For Role</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/user/permission/{!!$role->id!!}/update">
-                {{ csrf_field() }}
+            <form >
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Role Name</label>
-                                <input type="text" class="form-control" id="name" name="role" placeholder="Role's name" value="{!!$role->name!!}" readonly>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Role Name</label>
+                                    <input type="text" class="form-control" id="name" name="role" placeholder="Role's name" value="{!!$role->name!!}" readonly>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,30 +46,13 @@
                                     @if ($item->is_active == 1)
                                     <tr>
                                         <td>{!! $item->name !!}</td>
-                                        <td>
-                                            <label class="custom-toggle">
-                                            <input type="checkbox" name="permission[]" value="{!! "/".Str::lower($item->name)."/view" !!}">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="custom-toggle">
-                                            <input type="checkbox" name="permission[]" value="{!! "/".Str::lower($item->name) ."/create" !!}">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="custom-toggle">
-                                            <input type="checkbox" name="permission[]" value="{!! "/".Str::lower($item->name) ."/edit" !!}">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="custom-toggle">
-                                            <input type="checkbox" name="permission[]" value="{!! "/".Str::lower($item->name) ."/delete" !!}">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                                            </label>
-                                        </td>
+                                        @foreach ($value as $permission)
+                                            @if ($permission->menu_id == $item->id)
+                                            <td>
+                                                <button type="button" class="btn btn-success btn-sm" disabled><i class="ni ni-check-bold text-secondary"></i></button>
+                                            </td>
+                                            @endif
+                                        @endforeach
                                     </tr>
                                     @endif
                                     @endforeach
@@ -79,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group" style="float: right; margin-top: 20px;">
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <a class="btn btn-warning" href="{{url('/admin/user/permission/'.$role->id.'/edit')}}" role="button">Edit</a>
                             </div>
                         </div>
                     </div>

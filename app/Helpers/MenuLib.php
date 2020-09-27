@@ -8,6 +8,7 @@ use App\Models\Roles;
 use Spatie\Permission\Models\Role;
 use App\Models\Permissions;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Str;
 use DB;
 
 class MenuLib
@@ -36,12 +37,13 @@ class MenuLib
         foreach($menus as $data_menu)
         {
             $menu_name = $data_menu->name;
-            $menu_uri = $prefix.$data_menu->uri;
+            $menu_uri = '/admin'.$data_menu->uri;
             $menu_icon = $data_menu->icon;
+            $menuID = Str::after($data_menu->uri, '/');
 
             $html_out = '<li class="nav-item">
-                        <a class="nav-link" href="'.$menu_uri.'">
-                            <img src="menus_icon/'.$menu_icon.'" width="15" style="margin-right: 20px;">
+                        <a class="nav-link" href="'.$menu_uri.'" id="'.$menuID.'">
+                            <img src="/menus_icon/'.$menu_icon.'" width="15" style="margin-right: 20px;">
                             <span class="nav-link-text">'.$menu_name.'</span>
                         </a>
                     </li> ' ;
