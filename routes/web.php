@@ -23,7 +23,7 @@ use App\Http\Controllers\SectorController;
 Route::get('/login', [AuthorizeController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthorizeController::class, 'postlogin']);
 Route::get('/signup', [AuthorizeController::class, 'signup'])->name('signup');
-// Route::post('/postsignup', [AuthorizeController::class, 'postsignup']);
+Route::post('/postsignup', [AuthorizeController::class, 'postsignup']);
 Route::get('/notactive', [AuthorizeController::class, 'notactive'])->name('notactive');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
