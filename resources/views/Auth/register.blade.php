@@ -102,7 +102,7 @@
             });
 
             function signup(){
-                axios.post('/postsignup', {
+                axios.post('/api/signup', {
                     is_active: active,
                     name: name,
                     username: username,

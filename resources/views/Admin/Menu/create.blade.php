@@ -1,17 +1,7 @@
 @extends('Admin.Layouts.app')
 
 @section('css')
-
-<style>
-    .menu-parenthide {
-        visibility: hidden;
-        margin-top: -80px;
-    }
-    .menu-parentshow {
-        visibility: visible;
-    }
-</style>
-
+    
 @endsection
 
 @section('content')
@@ -68,31 +58,6 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Menu Type</label>
-                                <select class="form-control" id="menu_type" name="menu_type" onchange="menutype()">
-                                    <option value="">-- Select --</option>
-                                    <option value="parent">Parent-Menu</option>
-                                    <option value="child">Child-Menu</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row menu-parenthide" id="select_group">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Select Parent-Menu</label>
-                                <select class="form-control" name="menu_group">
-                                    <option value="">-- Select --</option>
-                                    @foreach ($data as $item)
-                                    <option value="{!!$item->id!!}">{!!$item->name!!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
                             <div class="form-group" style="float: right; margin-top: 20px;">
                                 <input class="btn btn-primary" type="submit" value="Save">
                             </div>
@@ -102,32 +67,15 @@
             </form>
         </div>
     </div>
-
-</div>
+    
+</div>    
 @endsection
 
 @section('js')
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {   
         $("#menu").addClass("active");
     });
-</script>
-
-<script>
-    function menutype() {
-        var menu = document.getElementById("menu_type").value;
-        // console.log(menu);
-        if(menu === "child"){
-            $('#select_group').removeClass("menu-parenthide");
-            $('#select_group').addClass("menu-parentshow");
-        }else if(menu == null){
-            $('#select_group').removeClass("menu-parentshow");
-            $('#select_group').addClass("menu-parenthide");
-        }else {
-            $('#select_group').removeClass("menu-parentshow");
-            $('#select_group').addClass("menu-parenthide");
-        }
-    }
 </script>
 
 <script type="text/javascript">

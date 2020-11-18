@@ -16,8 +16,8 @@ class RolesSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['name' => 'Supermin']);
-        $permission = Permission::create(['name' => 'Supermin']);
+        // $permission = Permission::create(['name' => 'Supermin']);
 
-        $role->givePermissionTo($permission);
+        // $role->givePermissionTo($permission);
     }
 }

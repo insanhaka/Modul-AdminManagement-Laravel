@@ -26,6 +26,6 @@ class UserSeeder extends Seeder
         ]);
 
         $SAdmin->assignRole('Supermin');
-        $SAdmin->givePermissionTo('Supermin');
+        // $SAdmin->givePermissionTo('Supermin');
     }
 }

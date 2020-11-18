@@ -88,7 +88,7 @@
     $(document).ready(function(){
       $("#name").change(function(){
         var name = document.getElementById('name').value;
-        var uri = name.toLowerCase();
+        var uri = name.replace(/\s+/g, '-').toLowerCase();
         document.getElementById('uri').value = "/" + uri;
       });
     });

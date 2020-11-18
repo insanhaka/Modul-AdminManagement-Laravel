@@ -20,18 +20,18 @@ class ApiController extends Controller
         ]);
     }
 
-    // public function signup(Request $request)
-    // {
-    //     // dd($request->username);
+    public function signup(Request $request)
+    {
+        // dd($request->username);
 
-    //     $signup = new User;
-    //     $signup->name = $request->name;
-    //     $signup->username = $request->username;
-    //     $signup->email = $request->email;
-    //     $signup->password = bcrypt($request->password);
-    //     $signup->is_active = $request->is_active;
+        $signup = new User;
+        $signup->name = $request->name;
+        $signup->username = $request->username;
+        $signup->email = $request->email;
+        $signup->password = bcrypt($request->password);
+        $signup->is_active = $request->is_active;
 
-    //     $signup->save();
-    // }
+        $signup->save();
+    }
 
 }

@@ -27,7 +27,6 @@ class AuthorizeController extends Controller
             }
             else
             {
-                Auth::logout();
                 return redirect()->route('notactive');
             }
         }
@@ -48,20 +47,6 @@ class AuthorizeController extends Controller
     public function signup()
     {
         return view('Auth.register');
-    }
-
-    public function postsignup(Request $request)
-    {
-        // dd($request->username);
-
-        $signup = new User;
-        $signup->name = $request->name;
-        $signup->username = $request->username;
-        $signup->email = $request->email;
-        $signup->password = bcrypt($request->password);
-        $signup->is_active = $request->is_active;
-
-        $signup->save();
     }
 
     public function notactive()

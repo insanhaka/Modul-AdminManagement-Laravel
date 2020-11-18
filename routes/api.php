@@ -21,4 +21,4 @@ use App\Http\Controllers\ApiController;
 
 
 Route::get('data-user', [ApiController::class, 'datauser']);
-// Route::post('signup', [ApiController::class, 'signup']);
+Route::post('signup', [ApiController::class, 'signup']);
