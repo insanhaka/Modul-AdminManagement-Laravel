@@ -15,7 +15,8 @@ class MenuController extends Controller
 
     public function add()
     {
-        return view('Admin.Menu.create');
+        $menus = Menu::where('menu_type', 'parent')->get();
+        return view('Admin.Menu.create', ['data' => $menus]);
     }
 
     public function create(Request $request)
@@ -24,6 +25,8 @@ class MenuController extends Controller
         $create->name = $request->name;
         $create->uri = $request->uri;
         $create->is_active = $request->is_active;
+        $create->menu_type = $request->menu_type;
+        $create->menu_group = $request->menu_group;
 
         // menyimpan data file yang diupload ke variabel $file
         $file = $request->file('gambar');
@@ -102,7 +105,7 @@ class MenuController extends Controller
 
         $menus = Menu::findOrFail($id);
         $menus->is_active = $request->is_active;
-        
+
         $process = $menus->save();
     }
 }

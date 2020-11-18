@@ -5,7 +5,8 @@
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="/admin">
-          <img src="{{asset('/assets/img/brand/blue.png')}}" class="navbar-brand-img" alt="..." width="550">
+          {{-- <img src="{{asset('/assets/img/brand/blue.png')}}" class="navbar-brand-img" alt="..." width="550"> --}}
+          <h2>MY BRAND</h2>
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
