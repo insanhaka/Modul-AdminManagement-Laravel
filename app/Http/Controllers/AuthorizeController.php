@@ -49,6 +49,20 @@ class AuthorizeController extends Controller
         return view('Auth.register');
     }
 
+    public function postsignup(Request $request)
+    {
+        // dd($request->username);
+
+        $signup = new User;
+        $signup->name = $request->name;
+        $signup->username = $request->username;
+        $signup->email = $request->email;
+        $signup->password = bcrypt($request->password);
+        $signup->is_active = $request->is_active;
+
+        $signup->save();
+    }
+
     public function notactive()
     {
     	return view('Auth.activation');
