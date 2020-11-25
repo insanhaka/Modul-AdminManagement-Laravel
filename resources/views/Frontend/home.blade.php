@@ -13,16 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="row" style="margin-top: 10%">
-        <div class="col-md-6">
-          <img src="{{asset('assets/img/Header-toko.png')}}" class="img-fluid" alt="Responsive image">
-        </div>
-        <div class="col-md-5" style="padding-top: 10%; padding-left: 10%">
-          <h2>HAI, SELAMAT DATANG</h2>
-          <p style="font-size: 12px;">Ini adalah official website BADE JUARA, Bade juara merupakan Badan Usaha Milik Desa Kebandingan, badan usaha ini mempunyai tempat usaha yang berlokasi di Desa Kebandingan RT01/RW01 Kecamatan Kedungbanteng, Kabupaten Tegal.</p>
-          <a class="btn" href="/business-units" role="button">Lihat Unit Usaha</a>
-        </div>
-      </div>
+      <h1>HELLO I'M FRONTEND</h1>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

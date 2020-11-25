@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 //===============FRONTEND ROUTE===============//
 use App\Http\Controllers\FrontlandingController;
-use App\Http\Controllers\FrontbusinessunitController;
 
 //===============BACKEND ROUTE================//
 use App\Http\Controllers\AuthorizeController;
@@ -22,7 +21,6 @@ use App\Http\Controllers\BusinessController;
 //=========================FRONTEND ROUTE=================================//
 
 Route::get('/', [FrontlandingController::class, 'index'])->name('landing');
-Route::get('/business-units', [FrontbusinessunitController::class, 'index'])->name('unit');
 
 //=========================BACKEND ROUTE=================================//
 
