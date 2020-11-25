@@ -14,6 +14,6 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        // $permission = Permission::create(['name' => 'Supermin']);
+        $permission = Permission::create(['name' => 'Supermin']);
     }
 }

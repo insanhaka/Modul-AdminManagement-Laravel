@@ -10,12 +10,12 @@ class MenuController extends Controller
     public function view()
     {
         $menus = Menu::all();
-        return view('Admin.Menu.index', ['data' => $menus]);
+        return view('SuperAdmin.Menu.index', ['data' => $menus]);
     }
 
     public function add()
     {
-        return view('Admin.Menu.create');
+        return view('SuperAdmin.Menu.create');
     }
 
     public function create(Request $request)
@@ -39,13 +39,13 @@ class MenuController extends Controller
         }
 
         $create->save();
-        return redirect(url('/admin/user/menu'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/admin/super/menu'))->with('created','Data Berhasil Disimpan');
     }
 
     public function edit($id)
     {
         $menus = Menu::findOrFail($id);
-        return view('Admin.Menu.edit', ['data' => $menus]);
+        return view('SuperAdmin.Menu.edit', ['data' => $menus]);
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class MenuController extends Controller
             $menus->is_active = $request->is_active;
             $process = $menus->save();
             if ($process) {
-                return redirect(url('/admin/user/menu'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/admin/super/menu'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -75,7 +75,7 @@ class MenuController extends Controller
             $menus->icon = $nama_file;
             $process = $menus->save();
             if ($process) {
-                return redirect(url('/admin/user/menu'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/admin/super/menu'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -89,7 +89,7 @@ class MenuController extends Controller
         $process = $menu->delete();
 
         if ($process) {
-            return redirect(url('/admin/user/menu'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/admin/super/menu'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

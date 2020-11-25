@@ -12,24 +12,24 @@ class RolesController extends Controller
     public function view()
     {
         $roles = Roles::all();
-        return view('Admin.Roles.index', ['data' => $roles]);
+        return view('SuperAdmin.Roles.index', ['data' => $roles]);
     }
 
     public function add()
     {
-        return view('Admin.Roles.create');
+        return view('SuperAdmin.Roles.create');
     }
 
     public function create(Request $request)
     {
         Role::create(['name' => $request->name]);
-        return redirect(url('/admin/user/roles'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/admin/super/roles'))->with('created','Data Berhasil Disimpan');
     }
 
     public function edit($id)
     {
         $roles = Roles::findOrFail($id);
-        return view('Admin.Roles.edit', ['data' => $roles]);
+        return view('SuperAdmin.Roles.edit', ['data' => $roles]);
     }
 
     public function update(Request $request, $id)
@@ -39,7 +39,7 @@ class RolesController extends Controller
         $process = $role->save();
 
         if ($process) {
-            return redirect(url('/admin/user/roles'))->with('updated','Data Berhasil Disimpan');
+            return redirect(url('/admin/super/roles'))->with('updated','Data Berhasil Disimpan');
         } else {
             return back()->with('warning','Data Gagal Disimpan');
         }
@@ -51,7 +51,7 @@ class RolesController extends Controller
         $process = $role->delete();
 
         if ($process) {
-            return redirect(url('/admin/user/roles'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/admin/super/roles'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

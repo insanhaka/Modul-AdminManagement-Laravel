@@ -20,18 +20,14 @@ class ApiController extends Controller
         ]);
     }
 
-    // public function signup(Request $request)
-    // {
-    //     // dd($request->username);
+    public function databusiness()
+    {
+        $business = DB::table('business')
+                ->get();
 
-    //     $signup = new User;
-    //     $signup->name = $request->name;
-    //     $signup->username = $request->username;
-    //     $signup->email = $request->email;
-    //     $signup->password = bcrypt($request->password);
-    //     $signup->is_active = $request->is_active;
-
-    //     $signup->save();
-    // }
+        return response()->json([
+            'databusiness' => $business,
+        ]);
+    }
 
 }

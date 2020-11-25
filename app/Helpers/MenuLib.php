@@ -29,11 +29,12 @@ class MenuLib
             $id = Permissions::where('id', $get_id)->first();
             $menu_id[] = $id->menu_id;
         }
+        
 
         $user_menu = array_unique($menu_id);
         $prefix = str_replace('/','',\Request::route()->getPrefix());
         $menus = Menu::find($user_menu);
-        
+
         foreach($menus as $data_menu)
         {
             $menu_name = $data_menu->name;

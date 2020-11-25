@@ -12,25 +12,25 @@ class UsersController extends Controller
     public function profile($id)
     {
         $user = User::findOrFail($id);
-        return view('Admin.Profile.index', ['data' => $user]);
+        return view('SuperAdmin.Profile.index', ['data' => $user]);
     }
 
     public function index()
     {
-        return view('Admin.Settings.index');
+        return view('SuperAdmin.Settings.index');
     }
 
     public function view()
     {
         $users = User::all();
-        return view('Admin.Users.index', ['data' => $users]);
+        return view('SuperAdmin.Users.index', ['data' => $users]);
     }
 
     public function edit($id)
     {
         $user = User::findOrFail($id);
         $roles = Roles::all();
-        return view('Admin.Users.edit', ['data' => $user, 'roles' => $roles]);
+        return view('SuperAdmin.Users.edit', ['data' => $user, 'roles' => $roles]);
     }
 
     public function update(Request $request, $id)
@@ -50,7 +50,7 @@ class UsersController extends Controller
 
             $process = $user->save();
             if ($process) {
-                return redirect(url('/admin/user/view'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/admin/super/view'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('error','Data Gagal Disimpan');
             }
@@ -69,7 +69,7 @@ class UsersController extends Controller
 
             $process = $user->save();
             if ($process) {
-                return redirect(url('/admin/user/view'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/admin/super/view'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('error','Data Gagal Disimpan');
             }
@@ -84,7 +84,7 @@ class UsersController extends Controller
         $process = $user->delete();
 
         if ($process) {
-            return redirect(url('/admin/user/view'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/admin/super/view'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('error','Data Gagal Dihapus');
         }

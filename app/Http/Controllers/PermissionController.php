@@ -26,14 +26,14 @@ class PermissionController extends Controller
         $role = Roles::all();
         $roles = $role->intersect(Roles::whereIn('name', $permission_name)->get());        
         
-        return view('Admin.Permission.index', ['permis' => $permissions, 'rol' => $roles]);
+        return view('SuperAdmin.Permission.index', ['permis' => $permissions, 'rol' => $roles]);
     }
 
     public function add()
     {
         $menus = Menu::all();
         $roles = Roles::all();
-        return view('Admin.Permission.create', ['data' => $menus, 'role' => $roles]);
+        return view('SuperAdmin.Permission.create', ['data' => $menus, 'role' => $roles]);
     }
 
     public function create(Request $request)
@@ -55,7 +55,7 @@ class PermissionController extends Controller
             $role->givePermissionTo($role->name.':'.$data);
         }
 
-        return redirect(url('/admin/user/permission'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/admin/super/permission'))->with('created','Data Berhasil Disimpan');
     }
 
     public function show($id)
@@ -75,7 +75,7 @@ class PermissionController extends Controller
 
         $menus = Menu::all();
 
-        return view('Admin.Permission.view', ['data' => $menus, 'value' => $permissions, 'role' => $roles]);
+        return view('SuperAdmin.Permission.view', ['data' => $menus, 'value' => $permissions, 'role' => $roles]);
     }
 
     public function edit($id)
@@ -83,7 +83,7 @@ class PermissionController extends Controller
         $roles = Roles::findOrFail($id);
 
         $menus = Menu::all();
-        return view('Admin.Permission.edit', ['data' => $menus, 'role' => $roles]);
+        return view('SuperAdmin.Permission.edit', ['data' => $menus, 'role' => $roles]);
     }
 
     public function update(Request $request, $id)
@@ -113,7 +113,7 @@ class PermissionController extends Controller
             $role->givePermissionTo($role->name.':'.$data);
         }
 
-        return redirect(url('/admin/user/permission'))->with('updated','Data Berhasil Disimpan');
+        return redirect(url('/admin/super/permission'))->with('updated','Data Berhasil Disimpan');
         
     }
 
@@ -130,7 +130,7 @@ class PermissionController extends Controller
         $permission_delete = Permissions::destroy($permission_id);
 
         if ($permission_delete) {
-            return redirect(url('/admin/user/permission'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/admin/super/permission'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

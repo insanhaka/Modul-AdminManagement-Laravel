@@ -15,7 +15,7 @@ class CreateRolesidToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('roles_id')->nullable();
-            $table->foreign('roles_id')->references('id')->on('users')->constrained()->after('is_active');
+            $table->foreign('roles_id')->references('id')->on('roles')->constrained()->after('is_active')->onDelete('cascade');
         });
     }
 
