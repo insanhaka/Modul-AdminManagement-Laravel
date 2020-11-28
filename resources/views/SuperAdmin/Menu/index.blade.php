@@ -15,7 +15,7 @@
                     <h2 class="text-primary">Data Menu</h2>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a class="btn btn-primary" href="/admin/super/menu/add" role="button">Add Data</a>
+                    <a class="btn btn-primary" href="/dapur/super/menu/add" role="button">Add Data</a>
                 </div>
             </div>
         </div>
@@ -124,7 +124,7 @@
         var is_active = status;
         // console.log(id);
         // console.log(status);
-        axios.post('/admin/menu/activation', {
+        axios.post('/dapur/menu/activation', {
             is_active: is_active,
             id: id
         })

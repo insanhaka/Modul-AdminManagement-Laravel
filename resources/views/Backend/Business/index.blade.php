@@ -15,7 +15,7 @@
                     <h2 class="text-primary">Data Business</h2>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a class="btn btn-primary" href="/admin/business/add" role="button">Add Data</a>
+                    <a class="btn btn-primary" href="/dapur/business/add" role="button">Add Data</a>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
                     },
                     callback: function (result) {
                         if (result == true) {
-                            window.location.href = "/admin/business/edit/"+id;
+                            window.location.href = "/dapur/business/edit/"+id;
                         }
                     }
                 });

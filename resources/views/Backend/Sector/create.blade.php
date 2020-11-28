@@ -13,7 +13,7 @@
           <h2 class="text-primary">Add Business Sector Data</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/business-sector/create">
+            <form method="POST" action="/dapur/business-sector/create">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">

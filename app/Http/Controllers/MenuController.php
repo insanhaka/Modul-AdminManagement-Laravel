@@ -15,7 +15,8 @@ class MenuController extends Controller
 
     public function add()
     {
-        return view('SuperAdmin.Menu.create');
+        $menus = Menu::where('type', 'parent')->get();
+        return view('SuperAdmin.Menu.create', ['data' => $menus]);
     }
 
     public function create(Request $request)
@@ -23,6 +24,8 @@ class MenuController extends Controller
         $create = new Menu;
         $create->name = $request->name;
         $create->uri = $request->uri;
+        $create->type = $request->type;
+        $create->parent_id = $request->parent_id;
         $create->is_active = $request->is_active;
 
         // menyimpan data file yang diupload ke variabel $file
@@ -39,7 +42,7 @@ class MenuController extends Controller
         }
 
         $create->save();
-        return redirect(url('/admin/super/menu'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/dapur/super/menu'))->with('created','Data Berhasil Disimpan');
     }
 
     public function edit($id)
@@ -60,7 +63,7 @@ class MenuController extends Controller
             $menus->is_active = $request->is_active;
             $process = $menus->save();
             if ($process) {
-                return redirect(url('/admin/super/menu'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/super/menu'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -75,7 +78,7 @@ class MenuController extends Controller
             $menus->icon = $nama_file;
             $process = $menus->save();
             if ($process) {
-                return redirect(url('/admin/super/menu'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/super/menu'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -89,7 +92,7 @@ class MenuController extends Controller
         $process = $menu->delete();
 
         if ($process) {
-            return redirect(url('/admin/super/menu'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/super/menu'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }
@@ -102,7 +105,7 @@ class MenuController extends Controller
 
         $menus = Menu::findOrFail($id);
         $menus->is_active = $request->is_active;
-        
+
         $process = $menus->save();
     }
 }

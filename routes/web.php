@@ -30,7 +30,7 @@ Route::get('/signup', [AuthorizeController::class, 'signup'])->name('signup');
 Route::post('/postsignup', [AuthorizeController::class, 'postsignup']);
 Route::get('/notactive', [AuthorizeController::class, 'notactive'])->name('notactive');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dapur', 'middleware' => 'auth'], function () {
     
     Route::get('/logout', [AuthorizeController::class, 'logout']);
 

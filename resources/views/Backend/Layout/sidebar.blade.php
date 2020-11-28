@@ -4,7 +4,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
-        <a class="navbar-brand" href="/admin">
+        <a class="navbar-brand" href="/dapur">
           <img src="{{asset('assets/img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
         </a>
         <div class="ml-auto">
@@ -24,7 +24,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/admin" id="dashboard">
+              <a class="nav-link" href="/dapur" id="dashboard">
                 <i class="ni ni-laptop text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>

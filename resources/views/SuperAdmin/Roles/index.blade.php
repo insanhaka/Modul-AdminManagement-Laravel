@@ -15,7 +15,7 @@
                     <h2 class="text-primary">Data Roles</h2>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a class="btn btn-primary" href="/admin/super/roles/add" role="button">Add Data</a>
+                    <a class="btn btn-primary" href="/dapur/super/roles/add" role="button">Add Data</a>
                 </div>
             </div>
         </div>

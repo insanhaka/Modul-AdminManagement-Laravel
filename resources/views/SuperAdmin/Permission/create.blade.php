@@ -13,7 +13,7 @@
           <h2 class="text-primary">Add Permission For Role</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/super/permission/create">
+            <form method="POST" action="/dapur/super/permission/create">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">

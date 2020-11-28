@@ -13,7 +13,7 @@
           <h2 class="text-primary">Edit Permission For Role</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/super/permission/{!!$role->id!!}/update">
+            <form method="POST" action="/dapur/super/permission/{!!$role->id!!}/update">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">

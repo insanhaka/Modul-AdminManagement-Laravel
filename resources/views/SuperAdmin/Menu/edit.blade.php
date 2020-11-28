@@ -13,7 +13,7 @@
           <h2 class="text-primary">Add Menu Data</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/super/menu/{!!$data->id!!}/update" enctype="multipart/form-data">
+            <form method="POST" action="/dapur/super/menu/{!!$data->id!!}/update" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">

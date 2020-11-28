@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group" style="float: right; margin-top: 20px;">
-                                <a class="btn btn-warning" href="{{url('/admin/super/permission/'.$role->id.'/edit')}}" role="button">Edit</a>
+                                <a class="btn btn-warning" href="{{url('/dapur/super/permission/'.$role->id.'/edit')}}" role="button">Edit</a>
                             </div>
                         </div>
                     </div>

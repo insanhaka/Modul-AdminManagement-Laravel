@@ -21,7 +21,7 @@ class SectorController extends Controller
     public function create(Request $request)
     {
         Sector::create(['name' => $request->name]);
-        return redirect(url('/admin/business-sector'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/dapur/business-sector'))->with('created','Data Berhasil Disimpan');
     }
 
     public function edit($id)
@@ -37,7 +37,7 @@ class SectorController extends Controller
         $process = $sector->save();
 
         if ($process) {
-            return redirect(url('/admin/business-sector'))->with('updated','Data Berhasil Disimpan');
+            return redirect(url('/dapur/business-sector'))->with('updated','Data Berhasil Disimpan');
         } else {
             return back()->with('warning','Data Gagal Disimpan');
         }
@@ -49,7 +49,7 @@ class SectorController extends Controller
         $process = $sector->delete();
 
         if ($process) {
-            return redirect(url('/admin/business-sector'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/business-sector'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

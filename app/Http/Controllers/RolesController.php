@@ -23,7 +23,7 @@ class RolesController extends Controller
     public function create(Request $request)
     {
         Role::create(['name' => $request->name]);
-        return redirect(url('/admin/super/roles'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/dapur/super/roles'))->with('created','Data Berhasil Disimpan');
     }
 
     public function edit($id)
@@ -39,7 +39,7 @@ class RolesController extends Controller
         $process = $role->save();
 
         if ($process) {
-            return redirect(url('/admin/super/roles'))->with('updated','Data Berhasil Disimpan');
+            return redirect(url('/dapur/super/roles'))->with('updated','Data Berhasil Disimpan');
         } else {
             return back()->with('warning','Data Gagal Disimpan');
         }
@@ -51,7 +51,7 @@ class RolesController extends Controller
         $process = $role->delete();
 
         if ($process) {
-            return redirect(url('/admin/super/roles'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/super/roles'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

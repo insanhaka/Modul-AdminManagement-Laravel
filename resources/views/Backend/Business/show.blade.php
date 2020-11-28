@@ -115,7 +115,7 @@
         var is_active = status;
         // console.log(id);
         // console.log(status);
-        axios.post('/admin/business/activation', {
+        axios.post('/dapur/business/activation', {
             is_active: is_active,
             id: id
         })

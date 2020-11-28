@@ -63,7 +63,7 @@
                       <a class="btn btn-warning" href="/profile/{!! $data->id !!}/edit" role="button">Edit</a>
                     </div>
                     <div class="col-md-5">
-                        <a class="btn btn-secondary" href="/admin" role="button">Back</a>
+                        <a class="btn btn-secondary" href="/dapur" role="button">Back</a>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ class PermissionController extends Controller
             $role->givePermissionTo($role->name.':'.$data);
         }
 
-        return redirect(url('/admin/super/permission'))->with('created','Data Berhasil Disimpan');
+        return redirect(url('/dapur/super/permission'))->with('created','Data Berhasil Disimpan');
     }
 
     public function show($id)
@@ -113,7 +113,7 @@ class PermissionController extends Controller
             $role->givePermissionTo($role->name.':'.$data);
         }
 
-        return redirect(url('/admin/super/permission'))->with('updated','Data Berhasil Disimpan');
+        return redirect(url('/dapur/super/permission'))->with('updated','Data Berhasil Disimpan');
         
     }
 
@@ -130,7 +130,7 @@ class PermissionController extends Controller
         $permission_delete = Permissions::destroy($permission_id);
 
         if ($permission_delete) {
-            return redirect(url('/admin/super/permission'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/super/permission'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }

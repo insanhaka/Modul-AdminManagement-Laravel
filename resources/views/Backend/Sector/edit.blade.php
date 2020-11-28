@@ -13,7 +13,7 @@
           <h2 class="text-primary">Edit Business Sector Data</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/business-sector/update/{!! $data->id !!}">
+            <form method="POST" action="/dapur/business-sector/update/{!! $data->id !!}">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
                     <div class="row">

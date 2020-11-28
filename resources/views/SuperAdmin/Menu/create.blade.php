@@ -1,7 +1,14 @@
 @extends('SuperAdmin.Layouts.app')
 
 @section('css')
-    
+<style>
+    .select-formhide {
+        display: none;
+    }
+    .select-formshow {
+        display: flex;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -13,9 +20,34 @@
           <h2 class="text-primary">Add Menu Data</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/admin/super/menu/create" enctype="multipart/form-data">
+            <form method="POST" action="/dapur/super/menu/create" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: -10px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Menu Type</label>
+                                <select class="form-control" name="type" id="menu-type" onchange="menutype()">
+                                    <option value="">-- Select --</option>
+                                    <option value="parent">Parent</option>
+                                    <option value="child">Child</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row select-formhide" id="select_parent">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Select Parent</label>
+                                <select class="form-control" name="parent_id">
+                                    <option value="">-- Select --</option>
+                                    @foreach ($data as $item)
+                                    <option value="{!! $item->id !!}">{!! $item->name !!}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -67,13 +99,13 @@
             </form>
         </div>
     </div>
-    
-</div>    
+
+</div>
 @endsection
 
 @section('js')
 <script>
-    $(document).ready(function() {   
+    $(document).ready(function() {
         $("#menu").addClass("active");
     });
 </script>
@@ -92,5 +124,19 @@
         document.getElementById('uri').value = "/" + uri;
       });
     });
+</script>
+
+<script>
+    function menutype() {
+        var i = document.getElementById("menu-type").value;
+        // console.log(i);
+        if(i === "child"){
+            $('#select_parent').removeClass("select-formhide");
+            $('#select_parent').addClass("select-formshow");
+        }else {
+            $('#select_parent').removeClass("select-formshow");
+            $('#select_parent').addClass("select-formhide");
+        }
+    }
 </script>
 @endsection

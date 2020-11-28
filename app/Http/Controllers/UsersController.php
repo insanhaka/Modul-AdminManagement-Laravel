@@ -50,7 +50,7 @@ class UsersController extends Controller
 
             $process = $user->save();
             if ($process) {
-                return redirect(url('/admin/super/view'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/super/view'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('error','Data Gagal Disimpan');
             }
@@ -69,7 +69,7 @@ class UsersController extends Controller
 
             $process = $user->save();
             if ($process) {
-                return redirect(url('/admin/super/view'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/super/view'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('error','Data Gagal Disimpan');
             }
@@ -84,7 +84,7 @@ class UsersController extends Controller
         $process = $user->delete();
 
         if ($process) {
-            return redirect(url('/admin/super/view'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/super/view'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('error','Data Gagal Dihapus');
         }

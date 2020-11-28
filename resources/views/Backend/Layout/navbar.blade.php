@@ -54,18 +54,18 @@
             <div class="dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="/admin/user/{{ Auth::user()->id }}/profile" class="dropdown-item">
+            <a href="/dapur/user/{{ Auth::user()->id }}/profile" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
             @hasrole('Supermin')
-            <a href="/admin/super/dashboard" class="dropdown-item">
+            <a href="/dapur/super/dashboard" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
             @endhasrole
             <div class="dropdown-divider"></div>
-            <a href="/admin/logout" class="dropdown-item">
+            <a href="/dapur/logout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>

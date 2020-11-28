@@ -41,7 +41,7 @@ class BusinessController extends Controller
 
         $process = $data->save();
         if ($process) {
-            return redirect(url('/admin/business'))->with('created', $business_name);
+            return redirect(url('/dapur/business'))->with('created', $business_name);
         }else {
             return back()->with('warning','Data Gagal Disimpan');
         }
@@ -193,7 +193,7 @@ class BusinessController extends Controller
 
         if ($files == null) {
             if ($business_update) {
-                return redirect(url('/admin/business'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/business'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -223,7 +223,7 @@ class BusinessController extends Controller
             }
 
             if ($business_update && $pict_proses) {
-                return redirect(url('/admin/business'))->with('updated','Data Berhasil Disimpan');
+                return redirect(url('/dapur/business'))->with('updated','Data Berhasil Disimpan');
             } else {
                 return back()->with('warning','Data Gagal Disimpan');
             }
@@ -237,7 +237,7 @@ class BusinessController extends Controller
         $process = $business->delete();
 
         if ($process) {
-            return redirect(url('/admin/business'))->with('deleted','Data Berhasil Dihapus');
+            return redirect(url('/dapur/business'))->with('deleted','Data Berhasil Dihapus');
         } else {
             return back()->with('warning','Data Gagal Dihapus');
         }
