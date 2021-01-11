@@ -110,23 +110,13 @@
                     password: password,
                 })
                 .then(function (response) {
-                    iziToast.success({
-                        timeout: 60000,
-                        close: false,
-                        overlay: true,
-                        displayMode: 'once',
-                        id: 'question',
-                        zindex: 999,
-                        title: 'Success',
-                        message: 'Registrasi berhasil, Silahkan login',
-                        position: 'center',
-                        buttons: [
-                            ['<button><b>OK</b></button>', function (instance, toast) {
-                    
-                                window.location.href = '/login';
-                    
-                            }, true],
-                        ]
+                    swal("Registrasi berhasil, silahkan Login.", {
+                        closeOnClickOutside: false,
+                    })
+                    .then((value) => {
+                        if(value == true){
+                            window.location.href = '/login';
+                        }
                     });
                 })
                 .catch(function (error) {

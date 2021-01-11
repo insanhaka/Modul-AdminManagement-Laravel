@@ -70,6 +70,8 @@ Route::group(['prefix' => 'dapur', 'middleware' => 'auth'], function () {
     //Route Untuk Admin Lain (Sesuai Menu)
 
     Route::get('/user/{id}/profile', [UsersController::class, 'profile']);
+    Route::get('/user-profile/{id}/edit', [UsersController::class, 'editprofile']);
+    Route::post('/user-profile/{id}/update', [UsersController::class, 'updateprofile']);
 
     Route::get('/business-sector', [SectorController::class, 'view'])->name('business-sector');
     Route::get('/business-sector/add', [SectorController::class, 'add']);

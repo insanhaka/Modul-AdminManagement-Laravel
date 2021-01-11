@@ -38,7 +38,7 @@
                         @else
                         <img src="{{asset('profile_pictures/'.$data->photo)}}" class="rounded float-right" width="130" style="margin-bottom: 5%;">
                         @endif
-                        
+
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                 </table>
                 <div class="row" style="float: right">
                     <div class="col-md-5">
-                      <a class="btn btn-warning" href="/profile/{!! $data->id !!}/edit" role="button">Edit</a>
+                      <a class="btn btn-warning" href="/dapur/user-profile/{!! $data->id !!}/edit" role="button">Edit</a>
                     </div>
                     <div class="col-md-5">
                         <a class="btn btn-secondary" href="/dapur" role="button">Back</a>

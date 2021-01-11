@@ -55,6 +55,7 @@
 
 	<script src="{{ asset('assets/js/iziToast.js') }}"></script>
 	<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	  
 	@yield('js')

@@ -31,6 +31,7 @@
                                     <option value="">-- Select --</option>
                                     <option value="parent">Parent</option>
                                     <option value="child">Child</option>
+                                    <option value="primary">Primary</option>
                                 </select>
                             </div>
                         </div>
@@ -121,7 +122,7 @@
       $("#name").change(function(){
         var name = document.getElementById('name').value;
         var uri = name.replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('uri').value = "/" + uri;
+        document.getElementById('uri').value = uri;
       });
     });
 </script>
